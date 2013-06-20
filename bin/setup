@@ -1,0 +1,36 @@
+#!/bin/bash -e
+
+case "$1" in
+  -v|--version)
+    version="$2"
+esac
+
+SYSTEM_JBOSSEWS_DIR="/etc/alternatives/jbossews-${version}"
+
+if [ ! -d ${SYSTEM_JBOSSEWS_DIR} ]; then
+  echo "Couldn't find system jbossews dir at ${SYSTEM_JBOSSEWS_DIR}" 1>&2
+  exit 127
+fi
+
+mkdir -p ${OPENSHIFT_JBOSSEWS_DIR}/{run,tmp,conf,logs}
+mkdir -p ${OPENSHIFT_HOMEDIR}/.m2
+
+# Set up the config directory in the user repository template
+cp ${OPENSHIFT_JBOSSEWS_DIR}/versions/{shared,${version}}/configuration/* ${OPENSHIFT_JBOSSEWS_DIR}/template/.openshift/config
+
+# Link the system Tomcat binaries to the cart Tomcat instance directory
+ln -sf ${SYSTEM_JBOSSEWS_DIR}/bin/bootstrap.jar ${OPENSHIFT_JBOSSEWS_DIR}/bin/bootstrap.jar
+ln -sf ${SYSTEM_JBOSSEWS_DIR}/bin/commons-daemon.jar ${OPENSHIFT_JBOSSEWS_DIR}/bin/commons-daemon.jar
+ln -sf ${SYSTEM_JBOSSEWS_DIR}/bin/tomcat-juli.jar ${OPENSHIFT_JBOSSEWS_DIR}/bin/tomcat-juli.jar
+
+# Need to remove link: -f gets confused as this is a link to a link
+[ -e ${OPENSHIFT_JBOSSEWS_DIR}/lib ] && rm ${OPENSHIFT_JBOSSEWS_DIR}/lib
+ln -sf ${SYSTEM_JBOSSEWS_DIR}/lib ${OPENSHIFT_JBOSSEWS_DIR}/lib
+
+# Link the user-controlled configurations to the Tomcat conf directory
+ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/web.xml ${OPENSHIFT_JBOSSEWS_DIR}/conf
+ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/tomcat-users.xml ${OPENSHIFT_JBOSSEWS_DIR}/conf
+ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/postgresql_module.xml ${OPENSHIFT_JBOSSEWS_DIR}/conf
+ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/catalina.properties ${OPENSHIFT_JBOSSEWS_DIR}/conf
+ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/catalina.policy ${OPENSHIFT_JBOSSEWS_DIR}/conf
+ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/logging.properties ${OPENSHIFT_JBOSSEWS_DIR}/conf
