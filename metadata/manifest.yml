@@ -1,26 +1,24 @@
-Name: jbossews
-Cartridge-Short-Name: JBOSSEWS
+Name: tomcat
+Cartridge-Short-Name: TOMCAT
 Cartridge-Vendor: redhat
 Cartridge-Version: 0.0.1
-Display-Name: Tomcat 7 (JBoss EWS 2.0)
-Description: "JBoss Enterprise Web Server is the enterprise-class Java web container for large-scale lightweight web applications based on Tomcat 7. Build and deploy JSPs and Servlets in the cloud."
-Version: '2.0'
-Versions: ['2.0', '1.0']
+Display-Name: Tomcat 7.0
+Description: "Apache Tomcat 7 is an open source software implementation of the Java Servlet and JavaServer Pages technologies"
+Version: '7.0'
+Versions: ['7.0', '6.0']
 License: LGPL
 License-Url: http://www.gnu.org/copyleft/lesser.txt
-Vendor:  jboss.com
+Vendor: apache
 Categories:
   - service
   - java
-  - jboss
   - tomcat
-  - tomcat7
   - web_framework
-Website: http://www.redhat.com/products/jbossenterprisemiddleware/web-server/
+Website: http://tomcat.apache.org/
 Help-Topics:
   "Developer Center": https://www.openshift.com/developers
 Cart-Data:
-  - Key: OPENSHIFT_JBOSSEAP_LOG_DIR
+  - Key: OPENSHIFT_TOMCAT_LOG_DIR
     Type: environment
     Description: "Directory to store application log files."
   - Key: OPENSHIFT_TMP_DIR
@@ -29,10 +27,10 @@ Cart-Data:
   - Key: OPENSHIFT_REPO_DIR
     Type: environment
     Description: "Application root directory where application files reside. This directory is reset every time you do a git-push"
-  - Key: OPENSHIFT_JBOSSEWS_HTTP_PORT
+  - Key: OPENSHIFT_TOMCAT_HTTP_PORT
     Type: environment
     Description: "Internal port to which the web-framework binds to."
-  - Key: OPENSHIFT_JBOSSEWS_IP
+  - Key: OPENSHIFT_TOMCAT_IP
     Type: environment
     Description: "Internal IP to which the web-framework binds to."
   - Key: OPENSHIFT_APP_DNS
@@ -51,12 +49,12 @@ Cart-Data:
     Type: environment
     Description: "Unique ID which identified the gear. This value changes between gears."
 Provides:
-  - "jbossews-2.0"
-  - "jbossews"
-  - "jbossews(version) = 2.0.0"
-  - "jbossews(version) >= 2.0"
-  - "jboss-ews-2.0"
-  - "jboss-ews-2.0.0"
+  - "tomcat-7.0"
+  - "tomcat"
+  - "tomcat(version) = 7.0.0"
+  - "tomcat(version) >= 7.0"
+  - "tomcat-7.0"
+  - "tomcat-7.0.0"
 Publishes:
   get-internal-uri:
     Type: "NET_TCP:http"
@@ -77,7 +75,7 @@ Subscribes:
     Type: "ENV:NET_TCP:generic-java"
 Group-Overrides:
   - components:
-    - "jbossews-2.0"
+    - "tomcat-2.0"
     - web_proxy
 Endpoints:
   - Private-IP-Name:   IP
@@ -97,16 +95,16 @@ Endpoints:
 Additional-Control-Actions:
     - threaddump
 Version-Overrides:
-  '1.0':
-    Display-Name: Tomcat 6 (JBoss EWS 1.0)
-    Description: "JBoss Enterprise Web Server is the enterprise-class Java web container for large-scale lightweight web applications based on Tomcat 6. Build and deploy JSPs and Servlets in the cloud."
+  '6.0':
+    Display-Name: Tomcat 6
+    Description: "Apache Tomcat 6 is an open source software implementation of the Java Servlet and JavaServer Pages technologies"
     Provides:
-      - "jbossews-1.0"
-      - "jbossews"
-      - "jbossews(version) = 1.0.0"
-      - "jbossews(version) >= 1.0"
-      - "jboss-ews-1.0"
-      - "jboss-ews-1.0.0"
+      - "tomcat-6.0"
+      - "tomcat"
+      - "tomcat(version) = 6.0.0"
+      - "tomcat(version) >= 6.0"
+      - "tomcat-6.0"
+      - "tomcat-6.0.0"
     Categories:
       - service
       - java
@@ -116,5 +114,6 @@ Version-Overrides:
       - web_framework
     Group-Overrides:
       - components:
-        - "jbossews-1.0"
+        - "tomcat-6.0"
         - web_proxy
+

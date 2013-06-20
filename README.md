@@ -1,6 +1,6 @@
-# OpenShift Tomcat (JBossEWS) Cartridge
+# OpenShift Tomcat Community Cartridge
 
-The `jbossews` cartridge provides Tomcat on OpenShift via the JBoss EWS package.
+The `tomcat` cartridge provides Tomcat on OpenShift via a manual tomcat install.
 
 This cartridge has special functionality to enable integration with OpenShift and with other
 cartridges. See the [Cartridge Integrations](#cartridge-integrations) and
@@ -39,8 +39,8 @@ webapp contents to be rendered at `http://app_name-namespace.rhcloud.com/`.  If 
 Note: If you are building locally you'll also want to add any output wars under webapps 
 from the build to your `.gitignore` file.
 
-Note: If you are running scaled EWS then you need an application deployed to the root context (i.e. 
-http://app_name-namespace.rhcloud.com/) for the HAProxy load-balancer to recognize that the EWS instance 
+Note: If you are running scaled TOMCAT then you need an application deployed to the root context (i.e. 
+http://app_name-namespace.rhcloud.com/) for the HAProxy load-balancer to recognize that the TOMCAT instance 
 is active.
 
 or
@@ -78,16 +78,16 @@ automatically deployed into the server runtime.
 The Tomcat cartridge provides several environment variables to reference for ease
 of use:
 
-    OPENSHIFT_JBOSSEWS_IP          The IP address used to bind EWS
-    OPENSHIFT_JBOSSEWS_HTTP_PORT   The EWS listening port
-    OPENSHIFT_JBOSSEWS_JPDA_PORT   The EWS JPDA listening port
+    OPENSHIFT_TOMCAT_IP          The IP address used to bind TOMCAT
+    OPENSHIFT_TOMCAT_HTTP_PORT   The TOMCAT listening port
+    OPENSHIFT_TOMCAT_JPDA_PORT   The TOMCAT JPDA listening port
 
 For more information about environment variables, consult the
 [OpenShift Application Author Guide](https://github.com/openshift/origin-server/blob/master/node/README.writing_applications.md).
 
 ### Environment Variable Replacement Support
 
-The `jbossews` cart provides special environment variable replacement functionality for some of the Tomcat configuration files.
+The `tomcat` cart provides special environment variable replacement functionality for some of the Tomcat configuration files.
 For the following configuration files:
 
   * `.openshift/config/server.xml`
@@ -96,8 +96,8 @@ For the following configuration files:
 Ant-style environment replacements are supported for all `OPENSHIFT_`-prefixed environment variables in the application. For
 example, the following replacements are valid in `server.xml`:
 
-      <Connector address="${OPENSHIFT_JBOSSEWS_IP}"
-                 port="${OPENSHIFT_JBOSSEWS_HTTP_PORT}"
+      <Connector address="${OPENSHIFT_TOMCAT_IP}"
+                 port="${OPENSHIFT_TOMCAT_HTTP_PORT}"
                  protocol="HTTP/1.1"
                  connectionTimeout="20000"
                  redirectPort="8443" />
@@ -108,7 +108,7 @@ resulting processed file is copied to the live Tomcat configuration directory.
 
 ## Cartridge Integrations
 
-The `jbossews` cart has out-of-the-box integration support with the RedHat `postgresql` and `mysql` cartridges. The default
+The `tomcat` cart has out-of-the-box integration support with the RedHat `postgresql` and `mysql` cartridges. The default
 `context.xml` contains two basic JDBC `Resource` definitions, `jdbc/MysqlDS` and `jdbc/PostgreSQLDS`, which will be automatically
 configured to work with their respective cartridges if installed into your application.
 

@@ -1,8 +1,8 @@
-%global cartridgedir %{_libexecdir}/openshift/cartridges/v2/jbossews
+%global cartridgedir %{_libexecdir}/openshift/cartridges/v2/tomcat
 
-Summary:       Provides JBossEWS2.0 support
-Name:          openshift-origin-cartridge-jbossews
-Version: 0.5.1
+Summary:       Provides TOMCAT support
+Name:          openshift-origin-cartridge-tomcat
+Version:       0.5.1
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -10,8 +10,6 @@ URL:           http://www.openshift.com
 Source0:       http://mirror.openshift.com/pub/openshift-origin/source/%{name}/%{name}-%{version}.tar.gz
 Requires:      rubygem(openshift-origin-node)
 Requires:      openshift-origin-node-util
-Requires:      tomcat6
-Requires:      tomcat7
 Requires:      lsof
 Requires:      java-1.7.0-openjdk
 Requires:      java-1.7.0-openjdk-devel
@@ -25,7 +23,7 @@ BuildRequires: jpackage-utils
 BuildArch:     noarch
 
 %description
-Provides JBossEWS1.0 and JBossEWS2.0 support to OpenShift. (Cartridge Format V2)
+Provides TOMCAT support to OpenShift. (Cartridge Format V2)
 
 %prep
 %setup -q
@@ -54,14 +52,6 @@ alternatives --install /etc/alternatives/maven-3.0 maven-3.0 /usr/share/maven 10
 alternatives --set maven-3.0 /usr/share/maven
 %endif
 
-alternatives --remove jbossews-1.0 /usr/share/tomcat6
-alternatives --install /etc/alternatives/jbossews-1.0 jbossews-1.0 /usr/share/tomcat6 102
-alternatives --set jbossews-1.0 /usr/share/tomcat6
-
-alternatives --remove jbossews-2.0 /usr/share/tomcat7
-alternatives --install /etc/alternatives/jbossews-2.0 jbossews-2.0 /usr/share/tomcat7 102
-alternatives --set jbossews-2.0 /usr/share/tomcat7
-
 %{_sbindir}/oo-admin-cartridge --action install --source %{cartridgedir}
 
 
@@ -75,6 +65,25 @@ alternatives --set jbossews-2.0 /usr/share/tomcat7
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Thu Jun 20 2013 Filirom1 <filirom1@gmail.com> 0.6.1-1
+- Fork jbossews to provide tomcat instead (filirom1@gmail.com)
+
+* Tue Jun 18 2013 Adam Miller <admiller@redhat.com> 0.5.3-1
+- Merge pull request #2881 from ironcladlou/bz/972979
+  (dmcphers+openshiftbot@redhat.com)
+- Bug 972979: Don't include ROOT.war in initial Git repository
+  (ironcladlou@gmail.com)
+
+* Mon Jun 17 2013 Adam Miller <admiller@redhat.com> 0.5.2-1
+- Bug 974923: Fix inaccurate Cart-Data env var references
+  (ironcladlou@gmail.com)
+- First pass at removing v1 cartridges (dmcphers@redhat.com)
+- Bug 973825 (dmcphers@redhat.com)
+- add APP_UUID to process (bdecoste@gmail.com)
+- Use -z with quotes (dmcphers@redhat.com)
+- WIP Cartridge Refactor - Fix setups to be reentrant (jhonce@redhat.com)
+- Make Install-Build-Required default to false (ironcladlou@gmail.com)
+
 * Thu May 30 2013 Adam Miller <admiller@redhat.com> 0.5.1-1
 - bump_minor_versions for sprint 29 (admiller@redhat.com)
 
