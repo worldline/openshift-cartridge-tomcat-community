@@ -2,7 +2,7 @@
 
 Summary:       Provides TOMCAT support
 Name:          openshift-origin-cartridge-tomcat
-Version:       0.6.4
+Version:       0.6.5
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -68,6 +68,31 @@ alternatives --set maven-3.0 /usr/share/maven
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Fri Jun 21 2013 Filirom1 <Filirom1@gmail.com> 0.6.5-1
+- s/filirom1/AtosWorldline/g (filirom1@gmail.com)
+- restart is not mandatory (filirom1@gmail.com)
+- Automatic commit of package [openshift-origin-cartridge-tomcat] release
+  [0.6.4-1]. (filirom1@gmail.com)
+- fix tomcat 6.0 server.xml (filirom1@gmail.com)
+- explain how to buil an RPM (filirom1@gmail.com)
+- Automatic commit of package [openshift-origin-cartridge-tomcat] release
+  [0.6.3-1]. (filirom1@gmail.com)
+- forget one jboss (filirom1@gmail.com)
+- looks better with 6.0 (filirom1@gmail.com)
+- Automatic commit of package [openshift-origin-cartridge-tomcat] release
+  [0.6.2-1]. (filirom1@gmail.com)
+- dos2unix (filirom1@gmail.com)
+- Automatic commit of package [openshift-origin-cartridge-tomcat] release
+  [0.6.1-1]. (filirom1@gmail.com)
+- Initialized to use tito. (filirom1@gmail.com)
+- fix JDK path (filirom1@gmail.com)
+- update SYSTEM_TOMCAT_DIR (filirom1@gmail.com)
+- dos2unix (filirom1@gmail.com)
+- chmod +x (filirom1@gmail.com)
+- 'redhat' is reserved.: 'Cartridge-Vendor' (filirom1@gmail.com)
+- replace jboss ews reference by tomcat (filirom1@gmail.com)
+- fork jbossews (filirom1@gmail.com)
+
 * Fri Jun 21 2013 Filirom1 <Filirom1@gmail.com> 0.6.4-1
 - fix tomcat 6.0 server.xml (Filirom1@gmail.com)
 - explain how to buil an RPM (Filirom1@gmail.com)
