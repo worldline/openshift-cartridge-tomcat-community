@@ -150,7 +150,7 @@ Make sure this option is enable the the broker config.
 
     DOWNLOAD_CARTRIDGES_ENABLED="true"
 
-Then create a cartridge with this URL: <http://cartreflect-claytondev.rhcloud.com/reflect?github=Filirom1/openshift-origin-cartridge-tomcat>
+Then create a cartridge with this URL: <http://cartreflect-claytondev.rhcloud.com/reflect?github=AtosWorldline/openshift-cartridge-tomcat-community>
 
 ## Install as a RPM
 
