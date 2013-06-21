@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 case "$1" in
   -v|--version)
@@ -23,7 +23,7 @@ ln -sf ${SYSTEM_TOMCAT_DIR}/bin/bootstrap.jar ${OPENSHIFT_TOMCAT_DIR}/bin/bootst
 ln -sf ${SYSTEM_TOMCAT_DIR}/bin/commons-daemon.jar ${OPENSHIFT_TOMCAT_DIR}/bin/commons-daemon.jar
 ln -sf ${SYSTEM_TOMCAT_DIR}/bin/tomcat-juli.jar ${OPENSHIFT_TOMCAT_DIR}/bin/tomcat-juli.jar
 
-# Need to remove link: -f gets confused as this is a link to a link
+# Need to remove link -f gets confused as this is a link to a link
 [ -e ${OPENSHIFT_TOMCAT_DIR}/lib ] && rm ${OPENSHIFT_TOMCAT_DIR}/lib
 ln -sf ${SYSTEM_TOMCAT_DIR}/lib ${OPENSHIFT_TOMCAT_DIR}/lib
 
