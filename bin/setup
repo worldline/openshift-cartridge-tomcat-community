@@ -5,7 +5,7 @@ case "$1" in
     version="$2"
 esac
 
-SYSTEM_TOMCAT_DIR="/etc/alternatives/tomcat-${version}"
+SYSTEM_TOMCAT_DIR="/opt/apache-tomcat-${version}"
 
 if [ ! -d ${SYSTEM_TOMCAT_DIR} ]; then
   echo "Couldn't find system tomcat dir at ${SYSTEM_TOMCAT_DIR}" 1>&2
