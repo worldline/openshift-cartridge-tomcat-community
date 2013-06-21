@@ -152,3 +152,23 @@ Make sure this option is enable the the broker config.
 
 Then create a cartridge with this URL: <http://cartreflect-claytondev.rhcloud.com/reflect?github=Filirom1/openshift-origin-cartridge-tomcat>
 
+## Install as a RPM
+
+Build the RPM.
+
+    $ yum install tito
+    $ tito init # only the first time you use tito for this cartridge
+    $ tito tag
+    $ tito build --rpm --test
+    ...
+    Successfully built: /tmp/tito/openshift-origin-cartridge-tomcat-0.6.2-1.git.0.bed44cb.el6.src.rpm /tmp/tito/noarch/openshift-origin-cartridge-tomcat-0.6.2-1.git.0.bed44cb.el6.noarch.rpm
+
+On the node
+
+    $ yum install /tmp/tito/noarch/openshift-origin-cartridge-tomcat-0.6.2-1.git.0.bed44cb.el6.noarch.rpm
+
+On the broker
+
+    $ oo-admin-broker-cache --clear --console
+    $ /etc/init.d/openshift-broker restart
+    $ /etc/init.d/openshift-console restart
