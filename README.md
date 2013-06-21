@@ -129,3 +129,26 @@ Adding marker files to `.openshift/markers` will have the following effects:
     
     java7                Will run Tomcat with Java7 if present. If no marker is present
                          then the baseline Java version will be used (currently Java6)
+
+## Install system dependecies
+ 
+    $ yum install bc java-1.6.0-openjdk-devel java-1.7.0-openjdk-devel
+
+## Download Tomcat 6 and Tomcat 7 and install them in `/opt/apache-tomcat-X.Y`
+
+    $ cd /opt
+    $ wget http://download.nextag.com/apache/tomcat/tomcat-7/v7.0.41/bin/apache-tomcat-7.0.41.tar.gz
+    $ tar xvzf apache-tomcat-7.0.41.tar.gz
+    $ ln -s /opt/apache-tomcat-7.0.41 /opt/apache-tomcat-7.0
+    $ wget http://psg.mtu.edu/pub/apache/tomcat/tomcat-6/v6.0.37/bin/apache-tomcat-6.0.37.tar.gz
+    $ tar xvzf apache-tomcat-6.0.37.tar.gz
+    $ ln -s /opt/apache-tomcat-6.0.37 /opt/apache-tomcat-6.0
+
+## Test as a download cartridge
+
+Make sure this option is enable the the broker config.
+
+    DOWNLOAD_CARTRIDGES_ENABLED="true"
+
+Then create a cartridge with this URL: <http://cartreflect-claytondev.rhcloud.com/reflect?github=Filirom1/openshift-origin-cartridge-tomcat>
+
