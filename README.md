@@ -170,5 +170,3 @@ On the node
 On the broker
 
     $ oo-admin-broker-cache --clear --console
-    $ /etc/init.d/openshift-broker restart
-    $ /etc/init.d/openshift-console restart
