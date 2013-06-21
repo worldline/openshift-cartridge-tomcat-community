@@ -2,7 +2,7 @@
 
 Summary:       Provides TOMCAT support
 Name:          openshift-origin-cartridge-tomcat
-Version:       0.6.3
+Version:       0.6.4
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -68,6 +68,10 @@ alternatives --set maven-3.0 /usr/share/maven
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Fri Jun 21 2013 Filirom1 <Filirom1@gmail.com> 0.6.4-1
+- fix tomcat 6.0 server.xml (Filirom1@gmail.com)
+- explain how to buil an RPM (Filirom1@gmail.com)
+
 * Fri Jun 21 2013 Filirom1 <Filirom1@gmail.com> 0.6.3-1
 - forget one jboss (Filirom1@gmail.com)
 - looks better with 6.0 (Filirom1@gmail.com)
