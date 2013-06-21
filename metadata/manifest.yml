@@ -13,6 +13,7 @@ Categories:
   - service
   - java
   - tomcat
+  - tomcat7
   - web_framework
 Website: http://tomcat.apache.org/
 Help-Topics:
@@ -108,7 +109,6 @@ Version-Overrides:
     Categories:
       - service
       - java
-      - jboss
       - tomcat
       - tomcat6
       - web_framework
