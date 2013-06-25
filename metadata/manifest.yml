@@ -1,6 +1,6 @@
 Name: tomcat
 Cartridge-Short-Name: TOMCAT
-Cartridge-Vendor: atos_worldline
+Cartridge-Vendor: atosworldline
 Cartridge-Version: 0.0.1
 Display-Name: Tomcat 7.0
 Description: "Apache Tomcat 7 is an open source software implementation of the Java Servlet and JavaServer Pages technologies"
