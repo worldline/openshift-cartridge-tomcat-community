@@ -7,6 +7,25 @@ esac
 
 SYSTEM_TOMCAT_DIR="/opt/apache-tomcat-${version}"
 
+# if SYSTEM_TOMCAT_DIR doesn't exists change it, to use a local tomcat
+if [ ! -d "$SYSTEM_TOMCAT_DIR" ]; then
+  SYSTEM_TOMCAT_DIR="${OPENSHIFT_DATA_DIR}/apache-tomcat-${version}"
+  rm -fr "${SYSTEM_TOMCAT_DIR}*"
+  pushd "${OPENSHIFT_DATA_DIR}"
+  if [ "${version}" == "6.0" ]; then
+    wget "http://psg.mtu.edu/pub/apache/tomcat/tomcat-6/v6.0.37/bin/apache-tomcat-6.0.37.tar.gz"
+    tar xvzf ${OPENSHIFT_DATA_DIR}/apache-tomcat-6.0.37.tar.gz
+    rm -f ${OPENSHIFT_DATA_DIR}/apache-tomcat-6.0.37.tar.gz
+    ln -s ${OPENSHIFT_DATA_DIR}/apache-tomcat-6.0.37 ${OPENSHIFT_DATA_DIR}/apache-tomcat-6.0
+  else
+    wget "http://download.nextag.com/apache/tomcat/tomcat-7/v7.0.41/bin/apache-tomcat-7.0.41.tar.gz"
+    tar xvzf ${OPENSHIFT_DATA_DIR}/apache-tomcat-7.0.41.tar.gz
+    rm -f ${OPENSHIFT_DATA_DIR}/apache-tomcat-7.0.41.tar.gz
+    ln -s ${OPENSHIFT_DATA_DIR}/apache-tomcat-7.0.41 ${OPENSHIFT_DATA_DIR}/apache-tomcat-7.0
+  fi
+  popd
+fi
+
 if [ ! -d ${SYSTEM_TOMCAT_DIR} ]; then
   echo "Couldn't find system tomcat dir at ${SYSTEM_TOMCAT_DIR}" 1>&2
   exit 127
@@ -34,3 +53,4 @@ ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/postgresql_module.xml ${OPENSHIFT
 ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/catalina.properties ${OPENSHIFT_TOMCAT_DIR}/conf
 ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/catalina.policy ${OPENSHIFT_TOMCAT_DIR}/conf
 ln -sf ${OPENSHIFT_REPO_DIR}/.openshift/config/logging.properties ${OPENSHIFT_TOMCAT_DIR}/conf
+
