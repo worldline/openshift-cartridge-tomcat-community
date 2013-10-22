@@ -2,7 +2,7 @@
 
 Summary:       Provides TOMCAT support
 Name:          openshift-origin-cartridge-tomcat
-Version:       0.6.6
+Version:       0.6.7
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -68,6 +68,9 @@ alternatives --set maven-3.0 /usr/share/maven
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Tue Oct 22 2013 Filirom1 <Filirom1@gmail.com> 0.6.7-1
+- Works on openshift online
+
 * Tue Jun 25 2013 Filirom1 <Filirom1@gmail.com> 0.6.6-1
 - new package built with tito
 
