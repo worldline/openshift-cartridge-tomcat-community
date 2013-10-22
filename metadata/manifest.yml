@@ -76,7 +76,7 @@ Subscribes:
     Type: "ENV:NET_TCP:generic-java"
 Group-Overrides:
   - components:
-    - "tomcat-2.0"
+    - "tomcat-7.0"
     - web_proxy
 Endpoints:
   - Private-IP-Name:   IP
