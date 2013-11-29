@@ -18,7 +18,7 @@ if [ ! -d "$SYSTEM_TOMCAT_DIR" ]; then
     rm -f ${OPENSHIFT_DATA_DIR}/apache-tomcat-6.0.37.tar.gz
     ln -s ${OPENSHIFT_DATA_DIR}/apache-tomcat-6.0.37 ${OPENSHIFT_DATA_DIR}/apache-tomcat-6.0
   else
-    wget "http://psg.mtu.edu/pub/apache/tomcat/tomcat-7/v7.0.42/bin/apache-tomcat-7.0.42.tar.gz"
+    wget "http://psg.mtu.edu/pub/apache/tomcat/tomcat-7/v7.0.47/bin/apache-tomcat-7.0.47.tar.gz"
     tar xvzf ${OPENSHIFT_DATA_DIR}/apache-tomcat-7.0.47.tar.gz
     rm -f ${OPENSHIFT_DATA_DIR}/apache-tomcat-7.0.47.tar.gz
     ln -s ${OPENSHIFT_DATA_DIR}/apache-tomcat-7.0.47 ${OPENSHIFT_DATA_DIR}/apache-tomcat-7.0
