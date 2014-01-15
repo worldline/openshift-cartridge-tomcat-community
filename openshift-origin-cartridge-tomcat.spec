@@ -2,7 +2,7 @@
 
 Summary:       Provides TOMCAT support
 Name:          openshift-origin-cartridge-tomcat
-Version:       0.6.7
+Version:       0.6.8
 Release:       1%{?dist}
 Group:         Development/Languages
 License:       ASL 2.0
@@ -68,6 +68,12 @@ alternatives --set maven-3.0 /usr/share/maven
 %doc %{cartridgedir}/LICENSE
 
 %changelog
+* Wed Jan 15 2014 Filirom1 <filirom1@gmail.com> 0.6.8-1
+- Bug 1005281 - Removing unneeded EAP dependency from EWS pom template
+  (filirom1@gmail.com)
+- tomcat version update (antoine.ansel@gmail.com)
+- tomcat version update (antoine.ansel@gmail.com)
+
 * Tue Oct 22 2013 Filirom1 <Filirom1@gmail.com> 0.6.7-1
 - Works on openshift online
 
